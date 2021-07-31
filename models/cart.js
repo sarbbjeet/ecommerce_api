@@ -5,7 +5,13 @@ const joi_objectId = require('joi-objectid')(Joi)
 const cartSchema = new mongoose.Schema({
     product_id: { type: mongoose.Schema.Types.ObjectId, ref: 'products' },
     numberOfItems: { type: Number, default: 1 },
-    itemsPrice: { type: Number, required: true }
+    itemsPrice: {
+        type: Number,
+        required: true,
+        set: function(p) { //add functionaly on the schema side 
+            return p * this.numberOfItems
+        }
+    }
 })
 
 
