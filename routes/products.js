@@ -12,8 +12,8 @@ const route = express.Router()
 
 route.get('/', async(req, res) => {
 
-    const product = await Product.find().populate('brand_id').select('brand_id')
-    console.log(process.env.USER_ID)
+    // const product = await Product.find().populate('brand_id')
+    const product = await Product.find()
     res.json(product)
 })
 
@@ -39,12 +39,12 @@ route.post('/', async(req, res) => {
         desc: req.body.desc,
         image: req.body.image,
         price: req.body.price,
-        number: req.body.number,
+        itemsAvailable: req.body.itemsAvailable,
         brand_id: req.body.brand_id,
         cat_id: req.body.cat_id,
         brand_name: brand.name,
         cat_name: cat.name,
-        product_details: req.body.product_details
+        product_details: req.body.product_details //object
             // product_details: {
             //     color: req.body.product_details.color,
             //     size: req.body.product_details.size

@@ -9,9 +9,7 @@ const userId = process.env.DB_USERID
 const password = process.env.DB_PASSWORD
 
 
-
 module.exports = () => {
-    console.log(process.env.PORT)
     if (process.env.NODE_ENV == 'development') //development mode //local pc
         url = `mongodb://localhost/${databaseName}`
     else //'production'  mode 

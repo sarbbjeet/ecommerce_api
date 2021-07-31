@@ -8,10 +8,10 @@ const productSchema = new mongoose.Schema({
 
     name: { type: String, required: true },
     desc: { type: String },
-    image: { type: String },
+    image: { type: [String] },
     price: { type: Number, required: true },
-    number: { type: Number, default: 1 },
-    cat_id: {
+    itemsAvailable: { type: Number, default: 1 },
+    cat_id: { //store reference 
         type: mongoose.Schema.Types.ObjectId,
         ref: 'cats'
     },
@@ -31,9 +31,9 @@ const productValidate = (product) => {
     const schema = {
         name: Joi.string().required(),
         desc: Joi.string(),
-        image: Joi.string(),
+        image: Joi.array(),
         price: Joi.number().required(),
-        number: Joi.number(),
+        itemsAvailable: Joi.number(),
         cat_id: joiObjectid().required(),
         brand_id: joiObjectid().required(),
         product_details: Joi.object()
