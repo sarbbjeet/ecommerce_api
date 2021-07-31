@@ -1,11 +1,11 @@
 const express = require('express')
 const app = express()
 app.use(express.json())
+require('dotenv').config() //library is used to read .env file variables
 const http = require('http')
 const server = http.createServer(app)
 require('express-async-errors')
 require('./startup/db')()
-
 
 app.use('/api/products', require('./routes/products'))
 app.use('/api/brands', require('./routes/brands'))

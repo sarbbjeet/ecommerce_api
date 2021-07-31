@@ -1,5 +1,6 @@
 const express = require('express')
 const _ = require('lodash') //select items from a object 
+const config = require("config")
 
 const { Product, productSchema, productValidate } = require('../models/product')
 const { Cat } = require('../models/cat')
@@ -12,6 +13,7 @@ const route = express.Router()
 route.get('/', async(req, res) => {
 
     const product = await Product.find().populate('brand_id').select('brand_id')
+    console.log(process.env.USER_ID)
     res.json(product)
 })
 

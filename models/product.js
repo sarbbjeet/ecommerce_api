@@ -21,7 +21,7 @@ const productSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'brands'
     },
-    product_details: { type: productDetailsSchema } //nested schema
+    product_details: { type: productDetailsSchema } //nested schema (Embedded Schema)
 })
 
 const Product = mongoose.model('products', productSchema)
