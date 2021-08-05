@@ -14,7 +14,6 @@ const cartSchema = new mongoose.Schema({
     }
 })
 
-
 const Cart = mongoose.model('carts', cartSchema)
 const cartValidate = (cart) => {
     const schema = {

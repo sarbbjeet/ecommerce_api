@@ -27,27 +27,29 @@ route.post('/', async(req, res) => {
 })
 
 route.put('/:id', async(req, res) => {
-
     let cart = await Cart.findById(req.params.id)
     if (!cart) return res.status(400).json({ success: false, message: 'wrong cart id' })
         //update
-    const keyWords = ['product_id', 'numberOfItems']
+    const keyWords = ["product_id", "numberOfItems"] //check which key or parameter user want to update
     keyWords.forEach(k => {
-        if (!req.body.k == undefined)
-            cart.k = req.body.k
-    })
-
-    console.log(cart)
-        // console.log(req.body.product_id)
-        // cart.product_id = req.body.product_id
-        // cart.numberOfItems = req.body.numberOfItems
-    const { error } = cartValidate(cart)
-    if (error) return res.status(400).json({ success: false, message: error.details[0].message })
-        //update details 
+            if (!(req.body[k] == undefined))
+                cart[k] = req.body[k]
+        })
+        //check entered product_id is valid or not 
+    const product = await Product.findById(cart.product_id)
+    if (!product) return res.status(400).json({ success: false, messgae: 'wrong product id' })
+    cart.itemsPrice = product.price //get single product price
+    if (cart.numberOfItems == 0) { //if numberOfItems equal to 0 remove product from the cart
+        await Cart.findByIdAndDelete(req.params.id)
+        return res.send({ succes: false, message: "product is removed from cart" })
+    }
+    // console.log(product.itemsAvailable)
+    // console.log(cart.numberOfItems)
+    if (cart.numberOfItems > product.itemsAvailable)
+        return res.status(400).json({ success: false, message: `only ${product.itemsAvailable} products are available in the stock` })
 
     cart = await cart.save()
     return res.json(cart)
-
 })
 
 module.exports = route
