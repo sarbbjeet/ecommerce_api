@@ -13,7 +13,9 @@ Create an e-commerce API with node js, express, and mongodb.
   example: {product_id: "", numberOfItems: 12}
   
   # logic to copy .json file data to database
-  - copyProductToDB.js file
+  
+  We can simply read and write data from a json file to a database using the code below.
+    - copyProductToDB.js 
   
  ````
   const { Product, productValidate } = require('../models/product')
