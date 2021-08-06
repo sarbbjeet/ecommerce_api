@@ -11,8 +11,10 @@ const password = process.env.DB_PASSWORD
 
 module.exports = () => {
     if (process.env.NODE_ENV == 'development') //development mode //local pc
+    {
+        // console.log(databaseName)
         url = `mongodb://localhost/${databaseName}`
-    else //'production'  mode 
+    } else //'production'  mode 
         url = `mongodb+srv://${userId}:${password}@cluster0.suij1.mongodb.net/${databaseName}?retryWrites=true&w=majority`
     mongoose.connect(url)
         .then(() => winston.info("connected with mongodb database"))

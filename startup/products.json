@@ -1,0 +1,29 @@
+[{
+        "name": "shirt",
+        "desc": "this is nice shirt",
+        "image": ["img.com", "image2.com"],
+        "price": 10,
+        "itemsAvailable": 34,
+        "cat_id": "6104432d33c1ca3640f7955c",
+        "brand_id": "61043740be3cab2fbc07629b",
+        "product_details": {
+            "color": "red",
+            "size": "small"
+        }
+
+    },
+    {
+        "name": "shirt22",
+        "desc": "this is my shirt",
+        "image": ["img.com", "image2.com"],
+        "price": 5,
+        "itemsAvailable": 14,
+        "cat_id": "6104432d33c1ca3640f7955c",
+        "brand_id": "61043740be3cab2fbc07629b",
+        "product_details": {
+            "color": "black",
+            "size": "large"
+        }
+
+    }
+]

@@ -5,8 +5,10 @@
     "main": "index.js",
     "scripts": {
         "start": "node index.js",
-        "dev": "nodemon index.js"
+        "dev": "nodemon index.js",
+        "copy": "node ./startup/copyProductsToDB.js"
     },
+    "engines": { "node": "10.19.0" },
     "keywords": [],
     "author": "",
     "license": "ISC",
